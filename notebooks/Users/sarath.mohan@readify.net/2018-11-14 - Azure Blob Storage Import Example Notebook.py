@@ -94,3 +94,6 @@ df.write.format("parquet").saveAsTable("output")
 # MAGIC %md
 # MAGIC 
 # MAGIC This table will persist across cluster restarts and allow various users across different notebooks to query this data.
+
+# COMMAND ----------
+
