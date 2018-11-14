@@ -15,12 +15,12 @@
 
 # COMMAND ----------
 
-storage_account_name = "STORAGE_ACCOUNT_NAME"
-storage_account_access_key = "YOUR_ACCESS_KEY"
+storage_account_name = "azurestorageccount2018"
+storage_account_access_key = "S8vnTj4AgYI27DbkmHZswIdukroGPd1rq97iwflFCV3uU1E+zsVt4Wd1pF4yMRJsWW3bpjMdgVW5W0d4wzMDzQ=="
 
 # COMMAND ----------
 
-file_location = "wasbs://example/location"
+file_location = "wasbs://data-bricks-test@azurestorageccount2018.blob.core.windows.net/"
 file_type = "csv"
 
 # COMMAND ----------
@@ -53,7 +53,7 @@ df = spark.read.format(file_type).option("inferSchema", "true").load(file_locati
 
 # COMMAND ----------
 
-display(df.select("EXAMPLE_COLUMN"))
+display(df.select("_c0"))
 
 # COMMAND ----------
 
@@ -65,7 +65,7 @@ display(df.select("EXAMPLE_COLUMN"))
 
 # COMMAND ----------
 
-df.createOrReplaceTempView("YOUR_TEMP_VIEW_NAME")
+df.createOrReplaceTempView("myview")
 
 # COMMAND ----------
 
@@ -77,7 +77,7 @@ df.createOrReplaceTempView("YOUR_TEMP_VIEW_NAME")
 
 # MAGIC %sql
 # MAGIC 
-# MAGIC SELECT EXAMPLE_GROUP, SUM(EXAMPLE_AGG) FROM YOUR_TEMP_VIEW_NAME GROUP BY EXAMPLE_GROUP
+# MAGIC SELECT * FROM myview 
 
 # COMMAND ----------
 
@@ -87,7 +87,7 @@ df.createOrReplaceTempView("YOUR_TEMP_VIEW_NAME")
 
 # COMMAND ----------
 
-df.write.format("parquet").saveAsTable("MY_PERMANENT_TABLE_NAME")
+df.write.format("parquet").saveAsTable("output")
 
 # COMMAND ----------
 
